@@ -1,26 +1,27 @@
 import Axios from "axios";
 import { last } from "lodash";
-import {drawData} from "./utils/dom";
+import { drawData } from "./utils/dom";
 
 
-const apiUrl = 'http://localhost:3000';
+const bepisian = 'https://rickandmortyapi.com/api/character/35';
+const eColi = 'https://rickandmortyapi.com/api/character/101';
+const debrahsPartner = 'https://rickandmortyapi.com/api/character/566';
+const michaelJenkins = "https://rickandmortyapi.com/api/character/448";
+const numbericon = 'https://rickandmortyapi.com/api/character/253';
+const robotSnake = 'https://rickandmortyapi.com/api/character/572';
 
-const addBtn = document.getElementById('add'),
-deleteBtn = document.getElementById('delete'),
-wrapper = document.getElementById('data');
+const wrapper = document.getElementById('data');
 
-Axios(apiUrl).then(response => drawData(response.data, wrapper));
+const renderApi = (apiUrl) => {
+    Axios.get(apiUrl).then(response => {
+        drawData(response.data, wrapper)
+    });
+}
 
-wrapper.addEventListener('click', (e) => {
-    if (e.target.classList.contains('delete')) {
-        Axios.get(`${apiUrl}/delete?id=${e.target.dataset.userId}`).then(response => drawData(response.data, wrapper));
-    }
-});
-
-addBtn.addEventListener('click', () => {
-    Axios.get(`${apiUrl}/add`).then(response => drawData(response.data, wrapper));
-})
-
-deleteBtn.addEventListener('click', () => {
-    Axios.get(`${apiUrl}/delete`).then(response => drawData(response.data, wrapper));
-})
+renderApi(bepisian);
+renderApi(eColi);
+renderApi(debrahsPartner);
+renderApi(michaelJenkins);
+renderApi(numbericon);
+renderApi(robotSnake);
+ 

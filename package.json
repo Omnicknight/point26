@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.20.0",
     "build": "^0.1.4",
+    "graphql": "^15.3.0",
     "lodash": "^4.17.20"
   },
   "devDependencies": {
